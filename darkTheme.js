@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 let div = document.createElement('div');
 div.style.width = '100vw';
 div.style.height = '100vh';
@@ -9,7 +14,6 @@ div.style.top = '0';
 div.style.left = '0';
 div.style.zIndex = '100000';
 div = document.childNodes[1].appendChild(div);
-console.log(div);
 
 window.addEventListener('load', () => {
     let elems = document.querySelectorAll('*');
@@ -17,15 +21,15 @@ window.addEventListener('load', () => {
     let brgb, crgb;
     let badd = 250, cadd = 100;
     elems.forEach(elem => {
+
         brgb = window.getComputedStyle(elem).backgroundColor;
         brgb = brgb.split(/[()]/)[1].split(', ');
-        brgb[0] = parseInt(brgb[0]);
-        brgb[1] = parseInt(brgb[1]);
-        brgb[2] = parseInt(brgb[2]);
+        brgb = brgb.map((val) => parseInt(val));
         if((brgb[0]>160 || brgb[1]>160 || brgb[2]>160)){
             elem.style.backgroundColor = 
-            `rgb(${brgb[0]-badd>=0?brgb[0]-badd:0},${brgb[1]-badd>=0?brgb[1]-badd:0},${brgb[2]-badd>=0?brgb[2]-badd:0})`;
-            
+            `rgb(${brgb.map((val) => 255 - val).join(',')})`;
+            console.log(elem);
+            // ${brgb[0]-badd>=0?brgb[0]-badd:0},${brgb[1]-badd>=0?brgb[1]-badd:0},${brgb[2]-badd>=0?brgb[2]-badd:0}
         }
         crgb = window.getComputedStyle(elem).color;
         crgb = crgb.split(/[()]/)[1].split(', ');

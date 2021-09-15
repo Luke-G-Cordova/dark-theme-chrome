@@ -1,10 +1,22 @@
+
+
+
 chrome.commands.onCommand.addListener((command) => {
     if(command === 'kill_lights'){
-        console.log('kill the lights');
+        let sendObj = {
+            command
+        }
     }
 });
 
-function tellScript(data){
-
-
+function sendData(sendObj){
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, tabs => {
+        chrome.tabs.sendMessage(
+            tabs[0].id,
+            sendObj
+        );
+    });
 }
