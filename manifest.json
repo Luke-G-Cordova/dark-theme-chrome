@@ -17,7 +17,8 @@
         "kill_lights":{
             "suggested_key": {
                 "default": "Ctrl+Shift+D"
-            }
+            },
+            "description":"turns the them on or off"
         }
     }
 }
