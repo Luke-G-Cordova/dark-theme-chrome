@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
         if((brgb[0]>160 || brgb[1]>160 || brgb[2]>160)){
             elem.style.backgroundColor = 
             `rgb(${brgb.map((val) => 255 - val).join(',')})`;
-            console.log(elem);
+            // console.log(elem);
             // ${brgb[0]-badd>=0?brgb[0]-badd:0},${brgb[1]-badd>=0?brgb[1]-badd:0},${brgb[2]-badd>=0?brgb[2]-badd:0}
         }
         crgb = window.getComputedStyle(elem).color;
